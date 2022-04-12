@@ -1,0 +1,9 @@
+[alias]
+	clang-format = clang-format-6.0
+	cane = commit --amend --no-edit
+	d = diff --submodule=diff --no-prefix
+	s = status
+    sh = show --no-prefix
+	su = submodule update --init --recursive
+    addnw=!sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+    r = reflog --date=relative
