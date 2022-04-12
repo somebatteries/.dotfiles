@@ -129,6 +129,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [[ ! "$PATH" == *$HOME/.local/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.local/bin"
+fi
+
 #-----------------------------------------------------------
 # Fuzzy finder
 #-----------------------------------------------------------
