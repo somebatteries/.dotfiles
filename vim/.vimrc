@@ -41,7 +41,9 @@ let g:ycm_complete_in_strings = 0 "Disable #include <... autocomplete
 let mapleader = "\\"
 set timeoutlen=200
 set ttimeoutlen=0
-set esckeys
+if !has ('nvim')
+    set esckeys
+endif
 
 let generate_tags=1
 
@@ -87,7 +89,11 @@ let Tlist_Auto_Open = 0
 "-----------------------------------------------------------
 " Jump to in split pane
 "-----------------------------------------------------------
-map <leader>g <C-w><C-v><C-]>
+if has ('nvim')
+    map <leader>g <C-w><C-v>gd
+else
+    map <leader>g <C-w><C-v><C-]>
+endif
 
 "-----------------------------------------------------------
 " Open vimrc
@@ -169,3 +175,11 @@ hi Normal ctermbg=none
 
 unmap <C-f>
 map <C-f> :FZF<CR>
+
+
+" turn hybrid line numbers on
+set number relativenumber
+
+" Default to vertical split when using Termdebug
+packadd termdebug
+let g:termdebug_wide=1
