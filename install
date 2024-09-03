@@ -2,3 +2,5 @@
 for d in */ ; do
     stow $d
 done
+
+/usr/bin/python3 -m pip install pynvim typing_extensions
