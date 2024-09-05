@@ -37,6 +37,11 @@ fzf-file-widget() {
   READLINE_POINT=$(( READLINE_POINT + ${#selected} ))
 }
 
+__fzf_cd_git__() {
+  local dir
+  dir=$(git submodule foreach --quiet 'echo $sm_path' | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'cd -- %q' "$dir"
+}
+
 __fzf_cd__() {
   local cmd dir
   cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
