@@ -4,6 +4,9 @@
 	email = garrett.t.smith@gmail.com
 [core]
 	editor = vim
+	pager = delta --line-numbers --navigate
+[delta]
+	side-by-side = true
 [alias]
 	clang-format = clang-format-6.0
 	cane = commit --amend --no-edit
