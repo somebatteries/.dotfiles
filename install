@@ -6,7 +6,12 @@ done
 
 /usr/bin/python3 -m pip install pynvim typing_extensions
 
-sudo apt install -y bat git-delta fzf neovim clang-format
+sudo apt install -y tmux bat git-delta fzf neovim clang-format
+
+if ! which tmux-sessionizer; then
+    mkdir -p ~/.local/bin
+    ln -sf $PWD/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
+fi
 
 if ! which delta; then
     wget https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb && sudo dpkg -i git-delta_0.18.2_amd64.deb && rm git-delta_0.18.2_amd64.deb
