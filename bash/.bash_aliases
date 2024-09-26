@@ -122,3 +122,29 @@ pkg ()
 echo -$1
 ggr -l \\b$1\\b -- \*.pkg.xml
 }
+
+######################################################
+# EVERYTHING BELOW HERE IS FOR INTERACTIVE SHELL ONLY
+if [[ $- =~ i ]]; then #Only do this if interactive mode.
+    gr() { #Goto root of git repo
+        git_root=$(git rev-parse --show-toplevel)
+        if [[ "" == "$git_root" ]]; then
+            return #Not in a git repo
+        fi
+    
+        if [[ "$(pwd)" == "$git_root" ]]; then
+            #Already at root, go even higher up if possible
+            superproject_root=$(git rev-parse --show-superproject-working-tree)
+            if [[ "" != "$superproject_root" ]]; then
+                cd "$superproject_root"
+            fi
+            return
+        fi
+    
+        cd "$git_root"
+    }
+    
+    # ALT+U to go up a Git repo
+    bind '"\eu":"gr\n"'
+fi
+
