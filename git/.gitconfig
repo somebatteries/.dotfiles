@@ -5,14 +5,76 @@
 [core]
 	editor = vim
 	pager = delta --line-numbers --navigate
-[delta]
-	side-by-side = true
+[difftool]
+        prompt = false
+[color]
+        ui = true
+[diff]
+    colorMoved = default
+        tool = bc3
+[merge]
+        tool = bc3
 [alias]
-	clang-format = clang-format-6.0
-	cane = commit --amend --no-edit
-	d = diff --submodule=diff --no-prefix
-	s = status
-    sh = show --no-prefix
-	su = submodule update --init --recursive
-    addnw=!sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
-    r = reflog --date=relative
+        addnw=!sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+        ca = commit --amend
+        cane = commit --amend --no-edit
+        clang-format = clang-format-6.0
+        co = checkout
+        d = diff --submodule=diff --no-prefix
+        ls = log --date=format:'%m/%d/%y' --format="%C(auto)%h%d' '%s' '%C(#777777)%cn' '%cd"  --graph
+        r = reflog --date=relative
+        rp = rev-parse
+        s = status
+        sh = show --no-prefix
+        su = submodule update --init --recursive
+[difftool "bc3"]
+        trustExitCode = true
+[mergetool "bc3"]
+        trustExitCode = true
+[clangFormat]
+        extensions = c,cpp,h,hpp
+[url "git@github.com:"]
+        insteadOf = git://github.com/
+[init]
+        templateDir = /home/smithg/.git-template
+#[blame]
+#       ignoreRevsFile = .git-blame-ignore-revs
+[delta]
+    # theme = platypus
+    # Author: https://github.com/sarpuser
+    dark = true
+    side-by-side = true
+    true-color = always
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [M]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    # file-style = "#ff9b00" ul bold
+    # file-decoration-style = "#ea00ff" box ul
+    zero-style = syntax
+    syntax-theme = Solarized (dark)
+    #commit-decoration-style ="#ea00ff" ul
+    hunk-header-decoration-style = omit
+    hunk-header-file-style = "#ff9b00" ul bold
+    hunk-header-line-number-style = "#ffd21a" bold
+    hunk-header-style = line-number syntax bold italic
+    line-numbers = true
+    line-numbers-left-format = "{nm:>1}|"
+    line-numbers-left-style = "#ea00ff"
+    line-numbers-minus-style = "#ff0051" bold
+    line-numbers-plus-style = "#1ac71e" bold
+    line-numbers-right-format = "{np:>1}|"
+    line-numbers-right-style = "#ea00ff"
+    line-numbers-zero-style = "#aaaaaa" italic
+    minus-emph-style = syntax bold "#b80000"
+    minus-style = syntax "#5d001e"
+    plus-emph-style = syntax bold "#1a861a"
+    plus-style = syntax "#2a5e37"
+    whitespace-error-style = "#280050"
+    wrap-max-lines = unlimited
+    wrap-right-percent = 1
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = ~/.config/themes.gitconfig
