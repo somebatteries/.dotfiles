@@ -1,0 +1,17 @@
+$include /etc/inputrc
+
+#smithg custom bindings for vimlike word navigation
+"\C-h": backward-word
+"\C-l": forward-word
+
+set colored-completion-prefix on
+"^?": backward-delete-char
+"OD": backward-word
+"OC": forward-word
+"\eOD": backward-word
+"\eOC": forward-word
+"\e[OC": forward-word
+"\e[OD": backward-word
+"\e[[C": forward-word
+"\e[[D": backward-word
+set completion-ignore-case on
