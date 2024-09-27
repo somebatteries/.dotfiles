@@ -33,3 +33,9 @@ fi
 if ! which fzf; then
     ./install_fzf.sh
 fi
+
+if [ ! -f ~/.config/github-copilot/apps.json ]; then
+    echo "Will now open neovim to setup Copilot..."
+    read -p "Press enter to continue"
+    nvim -c "Copilot setup" -c "echo 'Copilot setup complete.  Exit to return to install script.'"
+fi
