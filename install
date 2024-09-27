@@ -25,3 +25,7 @@ fi
 if ! which bcompare; then
     ./install_bcompare.sh
 fi
+
+if ! which node; then
+    ./install_nodejs.sh #For copilot
+fi
