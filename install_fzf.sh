@@ -1,0 +1,1 @@
+./bash/.fzf/install --all

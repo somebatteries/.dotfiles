@@ -6,7 +6,7 @@ done
 
 /usr/bin/python3 -m pip install pynvim typing_extensions
 
-sudo apt install -y jq tmux bat git-delta fzf neovim clang-format exuberant-ctags clangd
+sudo apt install -y jq tmux bat git-delta neovim clang-format exuberant-ctags clangd
 
 if ! which tmux-sessionizer; then
     mkdir -p ~/.local/bin
@@ -28,4 +28,8 @@ fi
 
 if ! which node; then
     ./install_nodejs.sh #For copilot
+fi
+
+if ! which fzf; then
+    ./install_fzf.sh
 fi

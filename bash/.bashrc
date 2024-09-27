@@ -132,4 +132,5 @@ fi
 #-----------------------------------------------------------
 # Fuzzy finder
 #-----------------------------------------------------------
-source $HOME/.fzf-key-bindings.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source $HOME/.fzf-alt-d.bash
