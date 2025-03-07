@@ -1,0 +1,20 @@
+--- client/main.c
++++ client/main.c
+@@ -2185,7 +2185,7 @@
+ 		return bt_shell_noninteractive_quit(EXIT_FAILURE);
+ 	}
+ 
+-	proxy = gatt_select_attribute(default_attr, argv[1]);
++	proxy = gatt_select_attribute(default_dev, argv[1]);
+ 	if (proxy) {
+ 		set_default_attribute(proxy);
+ 		return bt_shell_noninteractive_quit(EXIT_SUCCESS);
+@@ -2205,7 +2205,7 @@
+ 		return NULL;
+ 	}
+ 
+-	proxy = gatt_select_attribute(default_attr, argv[1]);
++	proxy = gatt_select_attribute(default_attr ? default_attr : default_dev, argv[1]);
+ 	if (!proxy) {
+ 		bt_shell_printf("Attribute %s not available\n", argv[1]);
+ 		return NULL;
