@@ -173,6 +173,9 @@ let $BASH_ENV = "~/.bash_aliases"
 
 hi Normal ctermbg=none
 
+" turn hybrid line numbers on
+set number relativenumber
+
 unmap <C-f>
 map <C-f> :FZF<CR>
 

@@ -11,9 +11,10 @@ esac
 #-----------------------------------------------------------
 # Fix X11 forwarding for WSLv2
 #-----------------------------------------------------------
-export DISPLAY=$(ip route list default | awk '{print $3}'):0
-export LIBGL_ALWAYS_INDIRECT=1
-
+if uname -r | grep -q "WSL2$"; then
+    export DISPLAY=$(ip route list default | awk '{print $3}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -23,8 +24,9 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+#infinite history
+HISTSIZE=
+HISTFILESIZE=
 
 # Diable CTRL-S freezing the shell until CTRL-Q is pressed.
 stty ixany
